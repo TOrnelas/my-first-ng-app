@@ -10,7 +10,7 @@ import {
   MatButtonModule, MatCardModule, MatGridListModule,
   MatIcon, MatListModule, MatRippleModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule,
   MatTooltipModule
 } from "@angular/material";
@@ -45,7 +45,8 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSnackBarModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +57,8 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSnackBarModule
   ],
   providers: [MovieDatabaseService],
   bootstrap: [AppComponent]

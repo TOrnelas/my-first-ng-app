@@ -2,7 +2,7 @@ import { AfterContentInit, Component, HostListener, OnInit } from '@angular/core
 import { Movie } from "../models/movie";
 import { MovieDatabaseService } from "../services/movie-database.service";
 import { MovieResponse } from "../models/movie-response";
-import {MatSelectChange} from "@angular/material";
+import {MatSelectChange, MatSnackBar, MatSnackBarRef} from "@angular/material";
 
 @Component({
   selector: 'app-movies',
@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit, AfterContentInit {
   currentPage = 1;
   lastSearchedFilter = 'popularity.desc';
 
-  constructor(private movieService: MovieDatabaseService) { }
+  constructor(private movieService: MovieDatabaseService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getMovies();
@@ -82,6 +82,7 @@ export class MoviesComponent implements OnInit, AfterContentInit {
       this.currentPage++;
       this.getMovies()
     }else {
+      this.snackBar.open("Coming soon...", '', { duration: 2000 });
       // todo load details page for that movie
     }
   }
