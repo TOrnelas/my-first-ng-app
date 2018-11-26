@@ -15,6 +15,8 @@ import {
   MatTooltipModule
 } from "@angular/material";
 import { MoviesComponent } from './movies/movies.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { ShowsComponent } from './shows/shows.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MoviesComponent } from './movies/movies.component';
     HomeComponent,
     HeaderComponent,
     MatIcon,
-    MoviesComponent
+    MoviesComponent,
+    SideMenuComponent,
+    ShowsComponent
   ],
   imports: [
     BrowserModule,
