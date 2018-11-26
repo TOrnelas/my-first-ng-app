@@ -14,13 +14,15 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from "@angular/material";
+import { MoviesComponent } from './movies/movies.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    MatIcon
+    MatIcon,
+    MoviesComponent
   ],
   imports: [
     BrowserModule,
