@@ -1,10 +1,13 @@
 <mat-toolbar>
+
+  <button mat-icon-button matTooltip="Menu" *ngIf="mobile" (click)="onMenuClicked()"><mat-icon>menu</mat-icon></button>
+
   <span>Movies and series browser</span>
 
   <span class="fill-remaining-space"></span>
 
-  <div class="row justify-content-sm-center">
-    <button mat-icon-button aria-label="Movies"><mat-icon>movie</mat-icon></button>
-    <button mat-icon-button aria-label="Movies"><mat-icon>tv</mat-icon></button>
+  <div class="row justify-content-sm-center" *ngIf="!mobile">
+    <button mat-icon-button matTooltip="See movies"><mat-icon>movie</mat-icon></button>
+    <button mat-icon-button matTooltip="See TV Shows"><mat-icon>tv</mat-icon></button>
   </div>
 </mat-toolbar>

@@ -6,7 +6,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from "./home/home.component";
 import { HeaderComponent } from './home/header/header.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {MatButtonModule, MatIcon, MatSelectModule, MatToolbarModule} from "@angular/material";
+import {
+  MatButtonModule,
+  MatIcon, MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -21,12 +28,18 @@ import {MatButtonModule, MatIcon, MatSelectModule, MatToolbarModule} from "@angu
     BrowserAnimationsModule,
     MatSelectModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
