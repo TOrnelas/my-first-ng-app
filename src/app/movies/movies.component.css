@@ -1,0 +1,6 @@
+.mat-card-image:first-child {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}

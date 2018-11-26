@@ -1,3 +1,14 @@
-<p>
-  movies works!
-</p>
+<mat-form-field style="margin:10px">
+  <mat-select placeholder="Filter by" (selectionChange)="onSubmit($event)">
+    <mat-option *ngFor="let filter of filters" [value]="filter.id">
+      {{ filter.title }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-grid-list [cols]="columns" rowHeight="10:15" style="margin:10px" gutterSize="16px">
+  <mat-grid-tile *ngFor="let movie of movies" style="cursor: pointer" (click)="onMovieClicked(movie)">
+    <mat-card matRipple>
+      <img matRipple mat-card-image src="{{ movie.poster_path | posterImagePathPipe }}" alt="">
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
