@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'movies', component: ContentListComponent },
   { path: 'shows', component: ContentListComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
