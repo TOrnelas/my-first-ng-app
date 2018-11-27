@@ -5,6 +5,7 @@ export class Content {
               public video?: boolean,
               public voteAverage?: number,
               public title?: string,
+              public name?: string,
               public popularity?: number,
               public poster_path?: string,
               public originalLanguage?: string,

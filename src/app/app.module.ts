@@ -21,6 +21,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MovieDatabaseService } from "./services/movie-database.service";
 import { BackdropImagePipe } from "./pipes/backdrop-image.pipe";
 import { ContentDetailsComponent } from './content-details/content-details.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContentDetailsComponent } from './content-details/content-details.compo
     SideMenuComponent,
     PosterImagePipe,
     BackdropImagePipe,
-    ContentDetailsComponent
+    ContentDetailsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

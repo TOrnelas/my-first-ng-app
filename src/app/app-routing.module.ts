@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import { ContentListComponent } from "./list/content-list.component";
 import {ContentDetailsComponent} from "./content-details/content-details.component";
+import {NotFoundComponent} from "./not-found/not-found.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'movies/:id', component: ContentDetailsComponent },
   { path: 'shows', component: ContentListComponent },
   { path: 'shows/:id', component: ContentDetailsComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent  },
 ];
 
 @NgModule({
