@@ -21,6 +21,7 @@ export class ContentListComponent implements OnInit, AfterContentInit {
   columns = 6;
   currentPage = 1;
   lastSearchedFilter = 'popularity.desc';
+  selected = this.lastSearchedFilter;
 
   constructor(private movieService: MovieDatabaseService,
               private snackBar: MatSnackBar,
@@ -60,7 +61,6 @@ export class ContentListComponent implements OnInit, AfterContentInit {
   }
 
   getContent(filter?: string) { // must increment (if needed) the this.currentPage variable before calling this method
-    // todo loading indicator
 
     if (this.currentPage == 1) { this.contentList = []; }
     else { this.contentList.splice(-1,1) }
