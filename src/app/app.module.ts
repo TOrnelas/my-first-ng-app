@@ -7,8 +7,8 @@ import { HomeComponent } from "./home/home.component";
 import { HeaderComponent } from './home/header/header.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
-  MatButtonModule, MatCardModule, MatGridListModule,
-  MatIcon, MatListModule, MatRippleModule,
+  MatButtonModule, MatCardModule, MatGridListModule, MatIconModule,
+  MatListModule, MatRippleModule,
   MatSelectModule,
   MatSidenavModule, MatSnackBarModule,
   MatToolbarModule,
@@ -25,7 +25,6 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    MatIcon,
     ContentListComponent,
     SideMenuComponent,
     PosterImagePipe
@@ -44,7 +43,8 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     MatGridListModule,
     MatCardModule,
     MatRippleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +56,8 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     MatGridListModule,
     MatCardModule,
     MatRippleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [MovieDatabaseService],
   bootstrap: [AppComponent]
