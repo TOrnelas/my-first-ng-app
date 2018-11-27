@@ -1,6 +1,5 @@
-export class Movie {
-  constructor(
-              public isDummy: boolean,
+export class Content {
+  constructor(public isDummy: boolean,
               public voteCount?: number,
               public id?: number,
               public video?: boolean,

@@ -14,9 +14,8 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from "@angular/material";
-import { MoviesComponent } from './movies/movies.component';
+import { ContentListComponent } from './list/content-list.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import { ShowsComponent } from './shows/shows.component';
 import {PosterImagePipe} from "./pipes/poster-image.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import {MovieDatabaseService} from "./services/movie-database.service";
@@ -27,9 +26,8 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     HomeComponent,
     HeaderComponent,
     MatIcon,
-    MoviesComponent,
+    ContentListComponent,
     SideMenuComponent,
-    ShowsComponent,
     PosterImagePipe
   ],
   imports: [

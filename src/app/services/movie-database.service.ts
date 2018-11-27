@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {MovieResponse} from "../models/movie-response";
+import  {Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { ContentListResponse } from "../models/content-list-response";
 
 @Injectable()
 export class MovieDatabaseService {
@@ -10,21 +10,19 @@ export class MovieDatabaseService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(filterBy: string, page: number) { // todo pagination
+  getContent(contentType: string, filterBy: string, page: number) {
 
     let queryParams = {
       sort_by: filterBy,
       api_key: this.API_KEY,
       language: 'en',
       page: page.toString(),
-      'vote_count.gte': '1000'
+      'vote_count.gte': contentType === 'movies' ? '1000' : '100'
     };
 
-    return this.http.get<MovieResponse>(
-      this.API_BASE_URL + 'discover/movie',
-      {
-        params: queryParams
-      }
+    return this.http.get<ContentListResponse>(
+      this.API_BASE_URL + 'discover/' +  (contentType === 'movies' ? 'movie' : 'tv'),
+      { params: queryParams }
     )
   }
 }
