@@ -1,11 +1,62 @@
-import { Component } from '@angular/core';
+import {AfterContentInit, Component, HostListener, OnInit} from '@angular/core';
+import {Content} from "../models/content";
+import {MovieDatabaseService} from "../services/movie-database.service";
+import {ContentListResponse} from "../models/content-list-response";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, AfterContentInit{
 
-  constructor() { }
+  columns = 6;
+  moviesList: Content[] = [];
+
+  constructor(private movieDatabaseService: MovieDatabaseService) { }
+
+  @HostListener('window:resize', ['$event']) // todo onload not applying
+  onResize(event) {
+    this.calcNumColumns(event.target.innerWidth);
+  }
+
+  private calcNumColumns(screenWidth: number) {
+    if (screenWidth < 600) {
+      this.columns = 2;
+    }else if (screenWidth < 800) {
+      this.columns = 4;
+    }else if (screenWidth < 1200){
+      this.columns = 6;
+    }/*else  if (screenWidth < 2000){
+      this.columns = 6;
+    }else{
+      this.columns = 10;
+    }*/
+  }
+
+  ngAfterContentInit() {
+    this.calcNumColumns(window.innerWidth);
+  }
+
+  ngOnInit() {
+    this.movieDatabaseService.getContent('movies', 'popularity.desc', 1).subscribe(
+      (response: ContentListResponse) => {
+        this.moviesList = this.moviesList.concat(response.results);
+        console.log(this.moviesList);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.movieDatabaseService.getContent('shows', 'popularity.desc', 1).subscribe(
+      (response: ContentListResponse) => {
+        this.moviesList = this.moviesList.concat(response.results);
+        console.log(this.moviesList);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

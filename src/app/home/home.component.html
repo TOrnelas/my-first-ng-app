@@ -1,6 +1,5 @@
-<div >
-  <div class="container">
-
+<div>
+  <div class="">
     <div class="row col-12 justify-content-center" style="margin-left: 0; margin-right: 0">
       <span class="mat-display-3 header-padding">Welcome!</span>
       <span class="centered-black-text">Browse through tons of movies and tvshows</span>
@@ -12,10 +11,18 @@
     </div>
     <div class="row justify-content-center" style="padding: 25px">
       <span class="mat-body-strong" style="margin-top: 10px">Powered by</span> <!--todo figure out vertical center-->
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1000px-Angular_full_color_logo.svg.png">
+      <img class="angular-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1000px-Angular_full_color_logo.svg.png">
     </div>
-
+    <mat-grid-list [cols]="columns" rowHeight="300:169" gutterSize="5px">
+      <mat-grid-tile *ngFor="let movie of moviesList" style="cursor: pointer">
+        <mat-card matRipple>
+            <img mat-card-image src="{{ movie.backdrop_path | backdropImagePathPipe }}" alt="">
+        </mat-card>
+        <mat-grid-tile-footer>
+          <mat-card-title> {{ movie.original_title ? movie.original_title : movie.name }}</mat-card-title>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
-
 </div>
 

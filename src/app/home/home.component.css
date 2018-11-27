@@ -7,7 +7,7 @@
 }
 
 .header-padding{
-  margin: 100px;
+  margin: 50px;
 }
 
 .centered-black-text{
@@ -29,7 +29,18 @@ button:hover{
   background: #3f51b5;
 }
 
-img{
+.angular-image{
   width: 50px;
   height: 50px;
+}
+
+.mat-card-image:first-child {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+mat-grid-list{
+  padding-bottom: 0;
 }

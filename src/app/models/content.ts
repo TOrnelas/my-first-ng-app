@@ -9,7 +9,7 @@ export class Content {
               public poster_path?: string,
               public originalLanguage?: string,
               public original_title?: string,
-              public backdropPath?: string,
+              public backdrop_path?: string,
               public adult?: boolean,
               public overview?: string,
               public releaseDate?: string

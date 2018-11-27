@@ -19,6 +19,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import {PosterImagePipe} from "./pipes/poster-image.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import {MovieDatabaseService} from "./services/movie-database.service";
+import {BackdropImagePipe} from "./pipes/backdrop-image.pipe";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MovieDatabaseService} from "./services/movie-database.service";
     HeaderComponent,
     ContentListComponent,
     SideMenuComponent,
-    PosterImagePipe
+    PosterImagePipe,
+    BackdropImagePipe
   ],
   imports: [
     BrowserModule,

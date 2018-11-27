@@ -5,6 +5,11 @@
   border-bottom-right-radius: inherit;
 }
 
+mat-grid-tile-footer:first-child{
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
 mat-grid-list{
   padding-bottom: 0;
 }
