@@ -1,13 +1,13 @@
 <mat-toolbar>
 
-  <button id="hamburgerMenu" mat-icon-button matTooltip="Menu" (click)="onMenuClicked()"><mat-icon>menu</mat-icon></button>
+  <button id="hamburgerMenu" mat-icon-button role="button" matTooltip="Menu" (click)="onMenuClicked()"><mat-icon>menu</mat-icon></button>
 
   <span routerLink="/home" style="cursor: pointer">Movies and series browser</span>
 
   <span class="fill-remaining-space"></span>
 
   <div class="row justify-content-sm-center" >
-    <button id="moviesMenu" mat-icon-button matTooltip="See movies" routerLink="/movies" routerLinkActive="mat-accent"><mat-icon>movie</mat-icon></button>
-    <button id="showsMenu" mat-icon-button matTooltip="See TV Shows" routerLink="/shows" routerLinkActive="mat-accent"><mat-icon>tv</mat-icon></button>
+    <button id="moviesMenu" role="button" mat-icon-button matTooltip="See movies" routerLink="/movies" routerLinkActive="mat-accent"><mat-icon>movie</mat-icon></button>
+    <button id="showsMenu" role="button" mat-icon-button matTooltip="See TV Shows" routerLink="/shows" routerLinkActive="mat-accent"><mat-icon>tv</mat-icon></button>
   </div>
 </mat-toolbar>
