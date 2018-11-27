@@ -16,10 +16,11 @@ import {
 } from "@angular/material";
 import { ContentListComponent } from './list/content-list.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import {PosterImagePipe} from "./pipes/poster-image.pipe";
-import {HttpClientModule} from "@angular/common/http";
-import {MovieDatabaseService} from "./services/movie-database.service";
-import {BackdropImagePipe} from "./pipes/backdrop-image.pipe";
+import { PosterImagePipe } from "./pipes/poster-image.pipe";
+import { HttpClientModule } from "@angular/common/http";
+import { MovieDatabaseService } from "./services/movie-database.service";
+import { BackdropImagePipe } from "./pipes/backdrop-image.pipe";
+import { ContentDetailsComponent } from './content-details/content-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {BackdropImagePipe} from "./pipes/backdrop-image.pipe";
     ContentListComponent,
     SideMenuComponent,
     PosterImagePipe,
-    BackdropImagePipe
+    BackdropImagePipe,
+    ContentDetailsComponent
   ],
   imports: [
     BrowserModule,

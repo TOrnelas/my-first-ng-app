@@ -24,14 +24,14 @@ export class HomeComponent implements OnInit, AfterContentInit{
     if (screenWidth < 600) {
       this.columns = 2;
     }else if (screenWidth < 800) {
-      this.columns = 4;
+      this.columns = 3;
     }else if (screenWidth < 1200){
-      this.columns = 6;
-    }/*else  if (screenWidth < 2000){
-      this.columns = 6;
+      this.columns = 4;
+    }else  if (screenWidth < 2000){
+      this.columns = 4;
     }else{
-      this.columns = 10;
-    }*/
+      this.columns = 6;
+    }
   }
 
   ngAfterContentInit() {
