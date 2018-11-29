@@ -3,7 +3,7 @@ export class Content {
               public voteCount?: number,
               public id?: number,
               public video?: boolean,
-              public voteAverage?: number,
+              public vote_average?: number,
               public title?: string,
               public name?: string,
               public popularity?: number,

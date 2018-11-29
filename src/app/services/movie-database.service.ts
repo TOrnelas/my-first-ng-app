@@ -1,6 +1,7 @@
 import  {Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ContentListResponse } from "../models/content-list-response";
+import {Content} from "../models/content";
 
 @Injectable()
 export class MovieDatabaseService {
@@ -15,13 +16,27 @@ export class MovieDatabaseService {
     let queryParams = {
       sort_by: filterBy,
       api_key: this.API_KEY,
-      language: 'en',
+      language: 'en', // todo is there a way to get the browser/user language
       page: page.toString(),
-      'vote_count.gte': contentType === 'movies' ? '1000' : '100'
+      'vote_count.gte': contentType === 'movies' ? '1000' : '100' // filter rubbish content
     };
 
     return this.http.get<ContentListResponse>(
       this.API_BASE_URL + 'discover/' +  (contentType === 'movies' ? 'movie' : 'tv'),
+      { params: queryParams }
+    )
+  }
+
+  getContentDetails(contentType: string, contentId: string) {
+
+    let queryParams = {
+      api_key: this.API_KEY,
+      language: 'en',
+      'append_to_response': 'videos,credits,similar'
+    };
+
+    return this.http.get<Content>(
+      this.API_BASE_URL + (contentType === 'movies' ? 'movie' : 'tv')+ '/' +  contentId,
       { params: queryParams }
     )
   }

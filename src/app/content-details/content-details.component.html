@@ -1,3 +1,29 @@
-<p>
-  content-details works!
-</p>
+<div *ngIf="content">
+  <div class="row remove-right-padding">
+    <img src="{{ content.backdrop_path | backdropImagePathPipe: 1280 }}" width="100%" style="height: 650px;">
+  </div>
+  <div class="row remove-right-padding">
+    <div class="col-12 col-md-3 text-center">
+      <img src="{{ content.poster_path | posterImagePathPipe }}" style="margin: 50px">
+    </div>
+    <div class="col-12 col-md-6" style="padding: 50px">
+      <div class="row">
+        <span class="mat-headline">{{ content.original_title || content.name }}</span>
+      </div>
+      <div class="row" style="display: flex; align-items: center">
+        <mat-icon>star</mat-icon>&nbsp;<mat-label>{{ content.vote_average }}</mat-label>&nbsp;&nbsp;
+        <mat-icon *ngIf="content.revenue">attach_money</mat-icon> <mat-label>{{ content.revenue }}</mat-label>&nbsp;&nbsp;
+        <mat-icon  *ngIf="content.homepage">public</mat-icon>&nbsp; <a href="{{ content.homepage }}" target="_blank">{{ content.homepage }}</a>&nbsp;&nbsp;
+        <mat-icon *ngIf="content.runtime">watch_later</mat-icon> <mat-label>{{ content.runtime | toHour }}</mat-label>
+      </div>
+      <hr>
+      <div class="row">
+        <span class="mat-subheading-1">{{ content.overview }}</span>
+      </div>
+      <hr>
+    </div>
+    <div class="col-12 col-md-3" style="padding: 50px">
+
+    </div>
+  </div>
+</div>

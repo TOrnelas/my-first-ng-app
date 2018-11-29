@@ -11,7 +11,7 @@ import {ContentListResponse} from "../models/content-list-response";
 export class HomeComponent implements OnInit, AfterContentInit{
 
   columns = 6;
-  moviesList: Content[] = [];
+  contentList: Content[] = [];
 
   constructor(private movieDatabaseService: MovieDatabaseService) { }
 
@@ -41,8 +41,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
   ngOnInit() {
     this.movieDatabaseService.getContent('movies', 'popularity.desc', 1).subscribe(
       (response: ContentListResponse) => {
-        this.moviesList = this.moviesList.concat(response.results);
-        console.log(this.moviesList);
+        this.contentList = this.contentList.concat(response.results);
       },
       (error) => {
         console.log(error);
@@ -51,8 +50,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
 
     this.movieDatabaseService.getContent('shows', 'popularity.desc', 1).subscribe(
       (response: ContentListResponse) => {
-        this.moviesList = this.moviesList.concat(response.results);
-        console.log(this.moviesList);
+        this.contentList = this.contentList.concat(response.results);
       },
       (error) => {
         console.log(error);

@@ -3,7 +3,7 @@ import { Content } from "../models/content";
 import { MovieDatabaseService } from "../services/movie-database.service";
 import { ContentListResponse } from "../models/content-list-response";
 import { MatSelectChange, MatSnackBar } from "@angular/material";
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-content-list',
@@ -20,12 +20,13 @@ export class ContentListComponent implements OnInit, AfterContentInit {
   ];
   columns = 6;
   currentPage = 1;
-  lastSearchedFilter = 'popularity.desc';
+  lastSearchedFilter = 'popularity.desc'; // todo save last selected filter in local storage. Going to details page and back makes filter reset
   selected = this.lastSearchedFilter;
 
   constructor(private movieService: MovieDatabaseService,
               private snackBar: MatSnackBar,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.contentType = this.route.snapshot.url[0].path;
@@ -84,13 +85,12 @@ export class ContentListComponent implements OnInit, AfterContentInit {
     );
   }
 
-  onMovieClicked(movie: Content){
-    if (movie.isDummy) { // load more list
+  onMovieClicked(content: Content){
+    if (content.isDummy) { // load more list
       this.currentPage++;
       this.getContent()
     }else {
-      this.snackBar.open("Coming soon...", null, { duration: 2000 });
-      // todo load details page for that movie
+      this.router.navigate([ content.id ], { relativeTo: this.route })
     }
   }
 }

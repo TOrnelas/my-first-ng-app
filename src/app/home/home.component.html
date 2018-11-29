@@ -14,12 +14,12 @@
       <img class="angular-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1000px-Angular_full_color_logo.svg.png">
     </div>
     <mat-grid-list [cols]="columns" rowHeight="300:169" gutterSize="5px">
-      <mat-grid-tile *ngFor="let movie of moviesList" style="cursor: pointer">
+      <mat-grid-tile *ngFor="let content of contentList" style="cursor: pointer">
         <mat-card matRipple>
-            <img mat-card-image src="{{ movie.backdrop_path | backdropImagePathPipe }}" alt="">
+            <img mat-card-image src="{{ content.backdrop_path | backdropImagePathPipe }}" alt="">
         </mat-card>
         <mat-grid-tile-footer>
-          <mat-card-title>{{ movie.original_title || movie.name }}</mat-card-title>
+          <mat-card-title>{{ content.original_title || content.name }}</mat-card-title>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>

@@ -22,6 +22,7 @@ import { MovieDatabaseService } from "./services/movie-database.service";
 import { BackdropImagePipe } from "./pipes/backdrop-image.pipe";
 import { ContentDetailsComponent } from './content-details/content-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {ToHourPipe} from "./pipes/to-hour-pipe";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SideMenuComponent,
     PosterImagePipe,
     BackdropImagePipe,
+    ToHourPipe,
     ContentDetailsComponent,
     NotFoundComponent
   ],
