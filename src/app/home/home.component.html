@@ -1,15 +1,15 @@
 <div>
-  <div class="container">
-    <div class="row col-12 justify-content-center" style="margin-left: 0; margin-right: 0">
+  <div>
+    <div class="row col-12 justify-content-center remove-right-padding" style="margin-left: 0; margin-right: 0">
       <span class="mat-display-3 header-padding">Welcome!</span>
       <span class="centered-black-text">Browse through tons of movies and tvshows</span>
       <span class="mat-display-1 centered-black-text">Developed by <a href="https://github.com/TOrnelas" target="_blank">Tiago Ornelas</a></span>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center remove-right-padding">
       <button mat-raised-button	color="#fffff" routerLink="/movies">Movies</button>
       <button mat-stroked-button color="#fffff" routerLink="/shows">TV Shows</button>
     </div>
-    <div class="row justify-content-center" style="padding: 25px">
+    <div class="row justify-content-center remove-right-padding" style="padding: 25px">
       <span class="mat-body-strong" style="margin-top: 10px">Powered by</span> <!--todo figure out vertical center-->
       <img class="angular-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1000px-Angular_full_color_logo.svg.png">
     </div>
@@ -19,7 +19,7 @@
             <img mat-card-image src="{{ movie.backdrop_path | backdropImagePathPipe }}" alt="">
         </mat-card>
         <mat-grid-tile-footer>
-          <mat-card-title> {{ movie.original_title ? movie.original_title : movie.name }}</mat-card-title>
+          <mat-card-title>{{ movie.original_title || movie.name }}</mat-card-title>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
