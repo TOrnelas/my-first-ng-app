@@ -16,7 +16,7 @@ export class MovieDatabaseService {
     let queryParams = {
       sort_by: filterBy,
       api_key: this.API_KEY,
-      language: 'en', // todo is there a way to get the browser/user language
+      language: navigator.language, // todo is there a way to get the browser/user language
       page: page.toString(),
       'vote_count.gte': contentType === 'movies' ? '1000' : '100' // filter rubbish content
     };
@@ -31,7 +31,7 @@ export class MovieDatabaseService {
 
     let queryParams = {
       api_key: this.API_KEY,
-      language: 'en',
+      language: navigator.language,
       'append_to_response': 'videos,credits,similar'
     };
 

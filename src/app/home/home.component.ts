@@ -53,10 +53,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
 
     this.movieDatabaseService.getContent('shows', 'popularity.desc', 1).subscribe(
       (response: ContentListResponse) =>
-        this.contentList = this.contentList.concat(response.results.map((content: Content) => {
-          content.movie = false;
-          return content
-        })),
+        this.contentList = this.contentList.concat(response.results),
       (error) => console.log(error)
     );
   }

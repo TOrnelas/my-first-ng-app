@@ -17,6 +17,6 @@ export class Content {
               public revenue?: number,
               public homepage?: string,
               public runtime?: number,
-              public movie?: boolean
+              public movie = false
               ) {}
 }
