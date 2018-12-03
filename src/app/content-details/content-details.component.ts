@@ -25,9 +25,7 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
           this.content = response;
           this.navigationService.detailsPageEventEmitter.emit(this.content);
         },
-        (error) => {
-          console.log(error); // todo handle error
-        }
+        (error) => console.log(error)// todo handle error
       );
   }
 

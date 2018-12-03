@@ -2,6 +2,7 @@ import {AfterContentInit, Component, HostListener, OnInit} from '@angular/core';
 import {Content} from "../models/content";
 import {MovieDatabaseService} from "../services/movie-database.service";
 import {ContentListResponse} from "../models/content-list-response";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,9 @@ export class HomeComponent implements OnInit, AfterContentInit{
   columns = 6;
   contentList: Content[] = [];
 
-  constructor(private movieDatabaseService: MovieDatabaseService) { }
+  constructor(private movieDatabaseService: MovieDatabaseService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   @HostListener('window:resize', ['$event']) // todo onload not applying
   onResize(event) {
@@ -40,21 +43,25 @@ export class HomeComponent implements OnInit, AfterContentInit{
 
   ngOnInit() {
     this.movieDatabaseService.getContent('movies', 'popularity.desc', 1).subscribe(
-      (response: ContentListResponse) => {
-        this.contentList = this.contentList.concat(response.results);
-      },
-      (error) => {
-        console.log(error);
-      }
+      (response: ContentListResponse) =>
+        this.contentList = this.contentList.concat(response.results.map((content: Content) => {
+          content.movie = true;
+          return content
+        })),
+      (error) => console.log(error)
     );
 
     this.movieDatabaseService.getContent('shows', 'popularity.desc', 1).subscribe(
-      (response: ContentListResponse) => {
-        this.contentList = this.contentList.concat(response.results);
-      },
-      (error) => {
-        console.log(error);
-      }
+      (response: ContentListResponse) =>
+        this.contentList = this.contentList.concat(response.results.map((content: Content) => {
+          content.movie = false;
+          return content
+        })),
+      (error) => console.log(error)
     );
+  }
+
+  onItemClicked(content: Content) {
+    this.router.navigate([content.movie ? 'movies' : 'shows', content.id])
   }
 }

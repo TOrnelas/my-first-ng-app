@@ -14,7 +14,7 @@
       <img class="angular-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1000px-Angular_full_color_logo.svg.png">
     </div>
     <mat-grid-list [cols]="columns" rowHeight="300:169" gutterSize="5px">
-      <mat-grid-tile *ngFor="let content of contentList" style="cursor: pointer">
+      <mat-grid-tile (click)="onItemClicked(content)" *ngFor="let content of contentList" style="cursor: pointer">
         <mat-card matRipple>
             <img mat-card-image src="{{ content.backdrop_path | backdropImagePathPipe }}" alt="">
         </mat-card>

@@ -7,6 +7,4 @@ import {Subscription} from "rxjs";
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css']
 })
-export class SideMenuComponent{
-
-}
+export class SideMenuComponent{ }

@@ -22,9 +22,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.menuCloseSubscription = this.sideMenu.closedStart.subscribe(
-      () => {
-        this.menuOpened = false;
-      }
+      () => this.menuOpened = false
     );
   }
 
