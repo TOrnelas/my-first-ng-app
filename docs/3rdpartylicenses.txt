@@ -394,6 +394,8 @@ MIT
 
 @angular/material/select
 
+@angular/material/icon
+
 @angular/material/tooltip
 
 @angular/material/snack-bar
@@ -401,8 +403,6 @@ MIT
 @angular/material/sidenav
 
 @angular/material/list
-
-@angular/material/icon
 
 @angular/material/toolbar
 
