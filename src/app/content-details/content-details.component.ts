@@ -19,12 +19,11 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.navigationService.detailsPageEventEmitter.emit(true);
-
     this.movieDatabaseService.getContentDetails(this.route.snapshot.url[0].path, this.route.snapshot.params['id'])
       .subscribe(
         (response: Content) => {
           this.content = response;
+          this.navigationService.detailsPageEventEmitter.emit(this.content);
         },
         (error) => {
           console.log(error); // todo handle error
@@ -33,6 +32,6 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.navigationService.detailsPageEventEmitter.emit(false)
+    this.navigationService.detailsPageEventEmitter.emit(null)
   }
 }

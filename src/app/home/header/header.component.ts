@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { Location } from '@angular/common'
 import {NavigationService} from "../../services/navigation.service";
+import {Content} from "../../models/content";
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,22 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   @Output() menuClickedEmitter = new EventEmitter<void>();
   displayBackArrow = false;
+  toolbarTitle = null;
 
   constructor(private location: Location,
               private navigationService: NavigationService) { }
 
   ngOnInit() {
     this.navigationService.detailsPageEventEmitter.subscribe(
-      (isOnDetailsPage: boolean) => {
-        this.displayBackArrow = isOnDetailsPage
+      (content: Content) => {
+        this.displayBackArrow = content != null;
+        this.toolbarTitle = content != null ? ( content.name || content.title) : null;
       }
     );
+  }
+
+  getToolbarTitle() {
+    return this.toolbarTitle == null ? "Movies and series browser" : this.toolbarTitle;
   }
 
   onMenuClicked() {
