@@ -1,14 +1,31 @@
 <mat-toolbar class="mat-elevation-z3">
 
   <button *ngIf="!displayBackArrow" id="hamburgerMenu" mat-icon-button role="button" matTooltip="Menu" (click)="onMenuClicked()"><mat-icon>menu</mat-icon></button>
-  <button *ngIf="displayBackArrow" id="backArrow" mat-icon-button role="button" matTooltip="Menu" (click)="onBackArrowClicked()"><mat-icon>arrow_back</mat-icon></button>
+  <button *ngIf="displayBackArrow" id="backArrow" mat-icon-button role="button" matTooltip="Back" (click)="onBackArrowClicked()"><mat-icon>arrow_back</mat-icon></button>
 
-  <span routerLink="/home" style="cursor: pointer">{{ getToolbarTitle()}}</span>
+  <span routerLink="/home" style="cursor: pointer">{{ getToolbarTitle() }}</span>
 
   <span class="fill-remaining-space"></span>
 
   <div class="row justify-content-sm-center">
-    <button *ngIf="!displayBackArrow" id="moviesMenu" role="button" mat-icon-button matTooltip="See movies" routerLink="/movies" routerLinkActive="mat-accent"><mat-icon>movie</mat-icon></button>
-    <button *ngIf="!displayBackArrow" id="showsMenu" role="button" mat-icon-button matTooltip="See TV Shows" routerLink="/shows" routerLinkActive="mat-accent"><mat-icon>tv</mat-icon></button>
+    <button
+      *ngIf="!displayBackArrow"
+            id="moviesMenu"
+            role="button"
+            mat-icon-button
+            matTooltip="See movies"
+            routerLink="/movies"
+            routerLinkActive="mat-accent">
+        <mat-icon>movie</mat-icon>
+    </button>
+    <button *ngIf="!displayBackArrow"
+            id="showsMenu"
+            role="button"
+            mat-icon-button
+            matTooltip="See TV Shows"
+            routerLink="/shows"
+            routerLinkActive="mat-accent">
+      <mat-icon>tv</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
