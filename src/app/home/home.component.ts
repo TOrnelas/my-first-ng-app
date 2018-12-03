@@ -1,8 +1,8 @@
-import {AfterContentInit, Component, HostListener, OnInit} from '@angular/core';
-import {Content} from "../models/content";
-import {MovieDatabaseService} from "../services/movie-database.service";
-import {ContentListResponse} from "../models/content-list-response";
-import {ActivatedRoute, Router} from "@angular/router";
+import { AfterContentInit, Component, HostListener, OnInit } from '@angular/core';
+import { Content } from "../models/content";
+import { MovieDatabaseService } from "../services/movie-database.service";
+import { ContentListResponse } from "../models/content-list-response";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -15,8 +15,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
   contentList: Content[] = [];
 
   constructor(private movieDatabaseService: MovieDatabaseService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+              private router: Router) { }
 
   @HostListener('window:resize', ['$event']) // todo onload not applying
   onResize(event) {
@@ -24,17 +23,11 @@ export class HomeComponent implements OnInit, AfterContentInit{
   }
 
   private calcNumColumns(screenWidth: number) {
-    if (screenWidth < 600) {
-      this.columns = 2;
-    }else if (screenWidth < 800) {
-      this.columns = 3;
-    }else if (screenWidth < 1200){
-      this.columns = 4;
-    }else  if (screenWidth < 2000){
-      this.columns = 4;
-    }else{
-      this.columns = 6;
-    }
+    if (screenWidth < 600) { this.columns = 2; } else
+    if (screenWidth < 800) { this.columns = 3; } else
+    if (screenWidth < 1200){ this.columns = 4; } else
+    if (screenWidth < 2000){ this.columns = 4; } else
+    { this.columns = 6; }
   }
 
   ngAfterContentInit() {
@@ -52,8 +45,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
     );
 
     this.movieDatabaseService.getContent('shows', 'popularity.desc', 1).subscribe(
-      (response: ContentListResponse) =>
-        this.contentList = this.contentList.concat(response.results),
+      (response: ContentListResponse) => this.contentList = this.contentList.concat(response.results),
       (error) => console.log(error)
     );
   }

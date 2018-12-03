@@ -20,7 +20,7 @@ export class ContentListComponent implements OnInit, AfterContentInit {
   ];
   columns = 6;
   currentPage = 1;
-  lastSearchedFilter = 'popularity.desc'; // todo save last selected filter in local storage. Going to details page and back makes filter reset
+  lastSearchedFilter = localStorage.getItem('last_filter') || 'popularity.desc'; // todo save last selected filter in local storage. Going to details page and back makes filter reset
   selected = this.lastSearchedFilter;
 
   constructor(private movieService: MovieDatabaseService,
@@ -69,6 +69,8 @@ export class ContentListComponent implements OnInit, AfterContentInit {
     if (!filter) {
       filter = this.lastSearchedFilter;
     }
+
+    localStorage.setItem('last_filter', filter)
 
     this.lastSearchedFilter = filter;
 
