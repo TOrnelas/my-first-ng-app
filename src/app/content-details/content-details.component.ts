@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Content} from "../models/content";
 import {ActivatedRoute} from "@angular/router";
 import {MovieDatabaseService} from "../services/movie-database.service";
+import {NavigationService} from "../services/navigation.service";
 
 @Component({
   selector: 'app-content-details',
   templateUrl: './content-details.component.html',
   styleUrls: ['./content-details.component.css']
 })
-export class ContentDetailsComponent implements OnInit {
+export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   content: Content;
 
   constructor(private route: ActivatedRoute,
-              private movieDatabaseService: MovieDatabaseService) { }
+              private movieDatabaseService: MovieDatabaseService,
+              private navigationService: NavigationService) { }
 
   ngOnInit() {
+
+    this.navigationService.detailsPageEventEmitter.emit(true);
 
     this.movieDatabaseService.getContentDetails(this.route.snapshot.url[0].path, this.route.snapshot.params['id'])
       .subscribe(
@@ -28,4 +32,7 @@ export class ContentDetailsComponent implements OnInit {
       );
   }
 
+  ngOnDestroy(): void {
+    this.navigationService.detailsPageEventEmitter.emit(false)
+  }
 }

@@ -1,3 +1,17 @@
 .remove-right-padding{
   margin-right: 0;
 }
+
+#posterImage{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 300px;
+}
+
+#backdropImage{
+  max-height: 600px;
+  height: 400px;
+  object-fit: cover;
+}

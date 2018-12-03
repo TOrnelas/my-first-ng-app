@@ -13,6 +13,9 @@ export class Content {
               public backdrop_path?: string,
               public adult?: boolean,
               public overview?: string,
-              public releaseDate?: string
+              public releaseDate?: string,
+              public revenue?: number,
+              public homepage?: string,
+              public runtime?: number
               ) {}
 }

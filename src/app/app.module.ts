@@ -23,6 +23,7 @@ import { BackdropImagePipe } from "./pipes/backdrop-image.pipe";
 import { ContentDetailsComponent } from './content-details/content-details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {ToHourPipe} from "./pipes/to-hour-pipe";
+import {NavigationService} from "./services/navigation.service";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import {ToHourPipe} from "./pipes/to-hour-pipe";
     MatSnackBarModule,
     MatIconModule
   ],
-  providers: [MovieDatabaseService],
+  providers: [MovieDatabaseService, NavigationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

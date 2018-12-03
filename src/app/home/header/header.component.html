@@ -1,6 +1,7 @@
 <mat-toolbar class="mat-elevation-z3">
 
-  <button id="hamburgerMenu" mat-icon-button role="button" matTooltip="Menu" (click)="onMenuClicked()"><mat-icon>menu</mat-icon></button>
+  <button *ngIf="!displayBackArrow" id="hamburgerMenu" mat-icon-button role="button" matTooltip="Menu" (click)="onMenuClicked()"><mat-icon>menu</mat-icon></button>
+  <button *ngIf="displayBackArrow" id="backArrow" mat-icon-button role="button" matTooltip="Menu" (click)="onBackArrowClicked()"><mat-icon>arrow_back</mat-icon></button>
 
   <span routerLink="/home" style="cursor: pointer">Movies and series browser</span>
 
