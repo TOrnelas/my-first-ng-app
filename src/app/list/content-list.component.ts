@@ -20,7 +20,7 @@ export class ContentListComponent implements OnInit, AfterContentInit {
   ];
   columns = 6;
   currentPage = 1;
-  lastSearchedFilter = localStorage.getItem('last_filter') || 'popularity.desc'; // todo save last selected filter in local storage. Going to details page and back makes filter reset
+  lastSearchedFilter = localStorage.getItem('last_filter') || 'popularity.desc';
   selected = this.lastSearchedFilter;
 
   constructor(private movieService: MovieDatabaseService,
@@ -33,27 +33,21 @@ export class ContentListComponent implements OnInit, AfterContentInit {
     this.getContent();
   }
 
-  @HostListener('window:resize', ['$event']) // todo onload not applying
+  ngAfterContentInit() {
+    this.calcNumColumns(window.innerWidth);
+  }
+
+  @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.calcNumColumns(event.target.innerWidth);
   }
 
   private calcNumColumns(screenWidth: number) {
-    if (screenWidth < 600) {
-      this.columns = 2;
-    }else if (screenWidth < 800) {
-      this.columns = 4;
-    }else if (screenWidth < 1200){
-      this.columns = 6;
-    }else  if (screenWidth < 2000){
-      this.columns = 8;
-    }else{
-      this.columns = 10;
-    }
-  }
-
-  ngAfterContentInit() {
-    this.calcNumColumns(window.innerWidth);
+    if (screenWidth < 600) { this.columns = 2; } else
+    if (screenWidth < 800) { this.columns = 4; } else
+    if (screenWidth < 1200){ this.columns = 6; } else
+    if (screenWidth < 2000){ this.columns = 8; } else
+    { this.columns = 10; }
   }
 
   onSubmit(matSelectChange: MatSelectChange) {
@@ -70,7 +64,7 @@ export class ContentListComponent implements OnInit, AfterContentInit {
       filter = this.lastSearchedFilter;
     }
 
-    localStorage.setItem('last_filter', filter)
+    localStorage.setItem('last_filter', filter);
 
     this.lastSearchedFilter = filter;
 

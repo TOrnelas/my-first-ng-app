@@ -50,6 +50,11 @@ mat-card:hover{
   transition: 500ms;
 }
 
+mat-card{
+  transform: scale(1);
+  transition: 500ms;
+}
+
 .remove-right-padding{
   margin-right: 0;
 }

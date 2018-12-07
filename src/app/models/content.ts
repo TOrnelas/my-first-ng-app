@@ -17,6 +17,7 @@ export class Content {
               public revenue?: number,
               public homepage?: string,
               public runtime?: number,
-              public movie = false
+              public movie = false,
+              public tagline?: string
               ) {}
 }
