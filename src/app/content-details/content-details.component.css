@@ -9,9 +9,10 @@
 }
 
 #backdropImage{
-  max-height: 600px;
-  height: 400px;
+  max-height: 400px;
+  /*height: 400px;*/
   object-fit: cover;
+  object-position: 5% 5%;
 }
 
 #tagline{
