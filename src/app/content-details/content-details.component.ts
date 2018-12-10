@@ -1,8 +1,10 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Content} from "../models/content";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MovieDatabaseService} from "../services/movie-database.service";
 import {NavigationService} from "../services/navigation.service";
+import {HttpErrorResponse} from "@angular/common/http";
+import {el} from "@angular/platform-browser/testing/src/browser_util";
 
 @Component({
   selector: 'app-content-details',
@@ -16,7 +18,8 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private movieDatabaseService: MovieDatabaseService,
-              private navigationService: NavigationService) { }
+              private navigationService: NavigationService,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -26,7 +29,13 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
           this.content = response;
           this.navigationService.detailsPageEventEmitter.emit(this.content);
         },
-        (error) => console.log(error)// todo handle error
+        (error: HttpErrorResponse) =>{
+          if (error.status == 404){ //movie/show not found
+            this.router.navigate(['/not-found']);
+          }else{
+            console.log(error)// todo handle error
+          }
+        }
       );
   }
 
