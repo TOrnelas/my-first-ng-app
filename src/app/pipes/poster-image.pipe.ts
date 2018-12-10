@@ -1,7 +1,7 @@
 import {Pipe, PipeTransform} from "@angular/core";
 
 @Pipe({
-  name: 'posterImagePathPipe'
+  name: 'posterImage'
 })
 export class PosterImagePipe implements PipeTransform { // todo maybe refactor this to suport all images
 

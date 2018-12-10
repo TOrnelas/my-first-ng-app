@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Content} from "../models/content";
 import {ActivatedRoute} from "@angular/router";
 import {MovieDatabaseService} from "../services/movie-database.service";
@@ -12,6 +12,7 @@ import {NavigationService} from "../services/navigation.service";
 export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   content: Content;
+  @ViewChild('tagline') tagline: ElementRef;
 
   constructor(private route: ActivatedRoute,
               private movieDatabaseService: MovieDatabaseService,

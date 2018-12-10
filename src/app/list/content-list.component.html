@@ -8,7 +8,7 @@
 <mat-grid-list [cols]="columns" rowHeight="10:15" style="margin:10px" gutterSize="16px">
   <mat-grid-tile *ngFor="let content of contentList" style="cursor: pointer" (click)="onMovieClicked(content)">
     <mat-card matRipple>
-      <img matRipple mat-card-image src="{{ content.poster_path | posterImagePathPipe }}" alt="">
+      <img matRipple mat-card-image src="{{ content.poster_path | posterImage }}" alt="">
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

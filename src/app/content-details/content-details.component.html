@@ -1,10 +1,11 @@
 <div *ngIf="content">
-  <div class="row remove-right-padding">
-    <img id="backdropImage" src="{{ content.backdrop_path | backdropImagePathPipe: 1280 }}" width="100%" style="height: 650px;">
+  <div id="backdropContainer" class="row remove-right-padding" style="position: relative">
+    <img id="backdropImage" src="{{ content.backdrop_path | backdropImage: 1280 }}" width="100%">
+    <span id="tagline" #tagline>{{ content.tagline }}</span>
   </div>
   <div class="row remove-right-padding justify-content-center">
     <div class="col-12 col-md-3 text-center" style="margin-top: 50px">
-      <img id="posterImage" src="{{ content.poster_path | posterImagePathPipe }}">
+      <img id="posterImage" src="{{ content.poster_path | posterImage }}">
     </div>
     <div class="col-12 col-md-6" style="padding: 50px">
       <div class="row">

@@ -16,7 +16,7 @@
     <mat-grid-list [cols]="columns" rowHeight="300:169" gutterSize="5px">
       <mat-grid-tile (click)="onItemClicked(content)" *ngFor="let content of contentList" style="cursor: pointer">
         <mat-card matRipple>
-            <img mat-card-image src="{{ content.backdrop_path | backdropImagePathPipe }}" alt="">
+            <img mat-card-image src="{{ content.backdrop_path | backdropImage }}" alt="">
         </mat-card>
         <mat-grid-tile-footer>
           <mat-card-title>{{ content.original_title || content.name }}</mat-card-title>
