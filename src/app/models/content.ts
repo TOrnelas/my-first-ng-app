@@ -1,3 +1,5 @@
+import { Credits } from "./credits";
+
 export class Content {
   constructor(public isDummy: boolean,
               public voteCount?: number,
@@ -18,6 +20,7 @@ export class Content {
               public homepage?: string,
               public runtime?: number,
               public movie = false,
-              public tagline?: string
+              public tagline?: string,
+              public credits?: Credits
               ) {}
 }

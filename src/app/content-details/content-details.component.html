@@ -4,10 +4,10 @@
     <span *ngIf="content.tagline" id="tagline">{{ content.tagline }}</span>
   </div>
   <div class="row remove-right-padding justify-content-center">
-    <div class="col-12 col-md-3 text-center" style="margin-top: 50px">
+    <div class="col-12 col-md-3 text-center">
       <img id="posterImage" src="{{ content.poster_path | posterImage }}">
     </div>
-    <div class="col-12 col-md-6" style="padding: 50px">
+    <div class="col-12 col-md-6" id="metadataContainer">
       <div class="row">
         <span class="mat-headline">{{ content.original_title || content.name }}</span>
       </div>
@@ -28,5 +28,20 @@
         <button mat-raised-button	color="#fffff" style="width: 100%; height: 50px; margin-bottom: 25px">Watch Trailer</button>
       </div>
     </div>
+  </div>
+  <div class="row">
+      <mat-grid-list id="castGrid" [cols]="getNumColumns()" rowHeight="9:9" gutterSize="50px">
+        <mat-grid-tile
+          class="mat-elevation-z3"
+          matRipple
+          id="actorTile"
+          *ngFor="let actor of getCurrentActors()"
+          matTooltip="{{ actor.name }} as {{ actor.character }}"
+          style="cursor: pointer">
+          <mat-card>
+            <img id="actorImage" matRipple mat-card-image src="{{ actor.profile_path | posterImage }}">
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
   </div>
 </div>

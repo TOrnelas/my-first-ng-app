@@ -5,6 +5,7 @@ import {MovieDatabaseService} from "../services/movie-database.service";
 import {NavigationService} from "../services/navigation.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {el} from "@angular/platform-browser/testing/src/browser_util";
+import {Person} from "../models/person";
 
 @Component({
   selector: 'app-content-details',
@@ -14,6 +15,8 @@ import {el} from "@angular/platform-browser/testing/src/browser_util";
 export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   content: Content;
+  currentPage = 0;
+
   @ViewChild('tagline') tagline: ElementRef;
 
   constructor(private route: ActivatedRoute,
@@ -41,5 +44,28 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.navigationService.detailsPageEventEmitter.emit(null)
+  }
+
+  getNumColumns() {
+    return 6; // todo this must return a dynamic value
+  }
+
+  getCurrentActors() {
+    let startingIndex = this.currentPage * this.getNumColumns();
+    return this.content.credits.cast.slice(startingIndex, startingIndex + this.getNumColumns());
+  }
+
+  incrementPage(){
+    if (this.currentPage < Math.ceil(this.content.credits.cast.length / this.getNumColumns()))
+      this.currentPage ++;
+    else
+      this.currentPage = 0;
+  }
+
+  decrementPage(){
+    if (this.currentPage > 0)
+      this.currentPage --;
+    else
+      this.currentPage = Math.ceil(this.content.credits.cast.length / this.getNumColumns()) ;
   }
 }
