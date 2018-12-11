@@ -68,4 +68,8 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
     else
       this.currentPage = Math.ceil(this.content.credits.cast.length / this.getNumColumns() - 1) ;
   }
+
+  shouldDisplayArrows(){
+    return this.content.credits.cast.length > this.getNumColumns()
+  }
 }
