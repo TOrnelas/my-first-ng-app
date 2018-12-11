@@ -10,13 +10,13 @@
       <button mat-stroked-button color="#fffff" routerLink="/shows">TV Shows</button>
     </div>
     <div class="row justify-content-center remove-right-padding" style="padding: 25px">
-      <span class="mat-body-strong" style="margin-top: 10px">Powered by</span> <!--todo figure out vertical center-->
+      <span class="mat-body-strong" style="margin-top: 10px">Powered by</span> <!--todo figure out vertical center without pixel measurement-->
       <img class="angular-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1000px-Angular_full_color_logo.svg.png">
     </div>
     <mat-grid-list [cols]="columns" rowHeight="300:169" gutterSize="5px">
       <mat-grid-tile (click)="onItemClicked(content)" *ngFor="let content of contentList" style="cursor: pointer">
         <mat-card matRipple>
-            <img mat-card-image src="{{ content.backdrop_path | backdropImage }}" alt="">
+          <img mat-card-image src="{{ content.backdrop_path | backdropImage }}" alt="">
         </mat-card>
         <mat-grid-tile-footer>
           <mat-card-title>{{ content.original_title || content.name }}</mat-card-title>

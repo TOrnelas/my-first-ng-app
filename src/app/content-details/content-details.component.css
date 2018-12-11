@@ -32,9 +32,24 @@
 
 #castGrid{
   width: 100%;
-  margin: 25px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 #actorTile{
   border-radius: 50%;
+}
+
+#previous{
+  left: 50px;
+  top: 50%;
+  position: absolute;
+  transform: translate(0%, -100%);
+}
+
+#next{
+  right: 50px;
+  top: 50%;
+  position: absolute;
+  transform: translate(0%, -100%);
 }

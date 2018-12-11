@@ -24,6 +24,7 @@ import { ContentDetailsComponent } from './content-details/content-details.compo
 import { NotFoundComponent } from './not-found/not-found.component';
 import {ToHourPipe} from "./pipes/to-hour-pipe";
 import {NavigationService} from "./services/navigation.service";
+import {ProfileImagePipe} from "./pipes/profile-image.pipe";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {NavigationService} from "./services/navigation.service";
     ContentListComponent,
     SideMenuComponent,
     PosterImagePipe,
+    ProfileImagePipe,
     BackdropImagePipe,
     ToHourPipe,
     ContentDetailsComponent,

@@ -55,17 +55,17 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
     return this.content.credits.cast.slice(startingIndex, startingIndex + this.getNumColumns());
   }
 
-  incrementPage(){
-    if (this.currentPage < Math.ceil(this.content.credits.cast.length / this.getNumColumns()))
+  incrementPage(){ // todo use this with arrows
+    if (this.currentPage < Math.ceil(this.content.credits.cast.length / this.getNumColumns()) - 1)
       this.currentPage ++;
     else
       this.currentPage = 0;
   }
 
-  decrementPage(){
+  decrementPage(){ // todo use this with arrows
     if (this.currentPage > 0)
       this.currentPage --;
     else
-      this.currentPage = Math.ceil(this.content.credits.cast.length / this.getNumColumns()) ;
+      this.currentPage = Math.ceil(this.content.credits.cast.length / this.getNumColumns() - 1) ;
   }
 }

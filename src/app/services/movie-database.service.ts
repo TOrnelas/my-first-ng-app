@@ -16,7 +16,7 @@ export class MovieDatabaseService {
     let queryParams = {
       sort_by: filterBy,
       api_key: this.API_KEY,
-      language: navigator.language, // todo is there a way to get the browser/user language
+      language: navigator.language,
       page: page.toString(),
       'vote_count.gte': contentType === 'movies' ? '1000' : '100' // filter rubbish content
     };
