@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Content} from "../models/content";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MovieDatabaseService} from "../services/movie-database.service";
@@ -16,6 +16,7 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
 
   content: Content;
   currentPage = 0;
+  gridColumns = 7;
 
   @ViewChild('tagline') tagline: ElementRef;
 
@@ -42,34 +43,48 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
       );
   }
 
+  ngAfterContentInit() {
+    this.calcNumColumns(window.innerWidth);
+  }
+
   ngOnDestroy(): void {
     this.navigationService.detailsPageEventEmitter.emit(null)
   }
 
-  getNumColumns() {
-    return 6; // todo this must return a dynamic value
-  }
-
   getCurrentActors() {
-    let startingIndex = this.currentPage * this.getNumColumns();
-    return this.content.credits.cast.slice(startingIndex, startingIndex + this.getNumColumns());
+    let startingIndex = this.currentPage * this.gridColumns;
+    return this.content.credits.cast.slice(startingIndex, startingIndex + this.gridColumns);
   }
 
-  incrementPage(){ // todo use this with arrows
-    if (this.currentPage < Math.ceil(this.content.credits.cast.length / this.getNumColumns()) - 1)
+  incrementPage(){
+    if (this.currentPage < Math.ceil(this.content.credits.cast.length / this.gridColumns) - 1)
       this.currentPage ++;
     else
       this.currentPage = 0;
   }
 
-  decrementPage(){ // todo use this with arrows
+  decrementPage(){
     if (this.currentPage > 0)
       this.currentPage --;
     else
-      this.currentPage = Math.ceil(this.content.credits.cast.length / this.getNumColumns() - 1) ;
+      this.currentPage = Math.ceil(this.content.credits.cast.length / this.gridColumns - 1) ;
   }
 
   shouldDisplayArrows(){
-    return this.content.credits.cast.length > this.getNumColumns()
+    return this.content.credits.cast.length > this.gridColumns;
+  }
+
+  @HostListener('window:resize', ['$event']) // todo onload not applying
+  onResize(event) {
+    this.calcNumColumns(event.target.innerWidth);
+  }
+
+  private calcNumColumns(screenWidth: number) {
+
+    if (screenWidth < 600) { this.gridColumns = 2; } else
+    if (screenWidth < 800) { this.gridColumns = 3; } else
+    if (screenWidth < 1200){ this.gridColumns = 4; } else
+    if (screenWidth < 2000){ this.gridColumns = 5; } else
+    this.gridColumns = 7;
   }
 }
