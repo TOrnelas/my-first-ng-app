@@ -74,6 +74,10 @@ export class ContentDetailsComponent implements OnInit, OnDestroy {
     return this.content.credits.cast.length > this.gridColumns;
   }
 
+  getTotalPages() {
+    return Math.ceil(this.content.credits.cast.length / this.gridColumns);
+  }
+
   @HostListener('window:resize', ['$event']) // todo onload not applying
   onResize(event) {
     this.calcNumColumns(event.target.innerWidth);

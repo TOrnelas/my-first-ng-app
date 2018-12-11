@@ -29,8 +29,10 @@
       </div>
     </div>
   </div>
+
   <div class="row remove-right-padding" style="position: relative">
-      <mat-grid-list id="castGrid" [cols]="this.gridColumns" rowHeight="1:1" gutterSize="50px">
+    <span class="mat-headline" style="margin: 40px">Actors  ({{ currentPage + 1 }}/{{ getTotalPages() }})</span>
+    <mat-grid-list id="castGrid" [cols]="this.gridColumns" rowHeight="1:1" gutterSize="50px">
         <mat-grid-tile
           class="mat-elevation-z3"
           matRipple
@@ -48,7 +50,6 @@
       id="previous"
       role="button"
       mat-icon-button
-      matTooltip="Navigate left"
       (click)="decrementPage()">
       <mat-icon>arrow_back_ios</mat-icon>
     </button>
@@ -57,7 +58,6 @@
       id="next"
       role="button"
       mat-icon-button
-      matTooltip="Navigate right"
       (click)="incrementPage()">
       <mat-icon>arrow_forward_ios</mat-icon>
     </button>
