@@ -8,6 +8,7 @@ import {Content} from "../../models/content";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 // todo disable title routerlink on toolbar title when on certain pages (like details page, where the content title is displayed)
 export class HeaderComponent implements OnInit, OnDestroy{
 

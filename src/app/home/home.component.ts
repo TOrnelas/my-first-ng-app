@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, AfterContentInit{
   constructor(private movieDatabaseService: MovieDatabaseService,
               private router: Router) { }
 
-  @HostListener('window:resize', ['$event']) // todo onload not applying
+  @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.calcNumColumns(event.target.innerWidth);
   }

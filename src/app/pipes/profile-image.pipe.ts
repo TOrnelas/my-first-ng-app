@@ -9,6 +9,6 @@ export class ProfileImagePipe implements PipeTransform { // todo maybe refactor 
     if (value)
       return 'https://image.tmdb.org/t/p/w' + (arg ? arg : 500) + value;
     else
-      return '/my-first-ng-app/assets/profile_placeholder.png' // todo figure out with /my-first-ng-app/ needs to be prepended when deploying
+      return 'assets/profile_placeholder.png' // todo figure out with /my-first-ng-app/ needs to be prepended when deploying
   }
 }

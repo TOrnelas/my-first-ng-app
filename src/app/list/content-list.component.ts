@@ -14,10 +14,8 @@ export class ContentListComponent implements OnInit, AfterContentInit {
 
   contentType = 'movies';
   contentList: Content[] = [];
-  filters = [
-    { id: 'release_date.desc', title: 'Most recent'}, { id: 'popularity.desc', title: 'Most popular'},
-    { id: 'revenue.desc', title: 'Most profitable'}, { id: 'vote_average.desc', title: 'Highest rating'}
-  ];
+  filters = [{ id: 'release_date.desc', title: 'Most recent'}, { id: 'popularity.desc', title: 'Most popular'},
+    { id: 'revenue.desc', title: 'Most profitable'}, { id: 'vote_average.desc', title: 'Highest rating'}];
   columns = 6;
   currentPage = 1;
   lastSearchedFilter = localStorage.getItem('last_filter') || 'popularity.desc';
